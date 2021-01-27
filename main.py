@@ -1,18 +1,33 @@
 import  sqlite3
 
-conn = sqlite3.connect('Hablame.db')
 
+ 
+#In here, we are creating the database. 
+name = input("Name your database file: ")
+name = name + '.db'
+print(name)
+
+
+#In here, the new information will be 
+#saved in the database that you created.
+conn = sqlite3.connect(name)
+
+# We must create a cursor. 
 c = conn.cursor()
 
-c.execute('''CREATE TABLE people (Username text, Password text, Native_Language text, Learning_language text, minutes qty, Join_date text)''')
+# We are creating a table in the database
+c.execute('''CREATE TABLE users (Username text, Password text, Native_Language text, Learning_language text, minutes_of_use qty, Join_date text)''')
 
-c.execute("INSERT INTO people VALUES ('Juan','tacosArethebest','Spanish','English', 30 , '2021-01-27')")
+
+def addingvalues():
+# We are adding new information to the table 
+    c.execute("INSERT INTO users VALUES ('Juan','tacosArethebest','Spanish','English', 30 , '2021-01-27')")
+    conn.commit()
+
+c.execute("INSERT INTO users VALUES ('Josh','PeacetoTheworld','English', 'Spanish', 45 , '2021-01-30')")
 conn.commit()
 
-c.execute("INSERT INTO people VALUES ('Josh','PeacetoTheworld','English', 'Spanish', 45 , '2021-01-30')")
-conn.commit()
-
-c.execute("INSERT INTO people VALUES ('Diana','DeathandLove','French', 'Spanish', 60 , '2021-01-30')")
+c.execute("INSERT INTO users VALUES ('Diana','DeathandLove','French', 'Spanish', 60 , '2021-01-30')")
 conn.commit()
 
 conn.close()
