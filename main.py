@@ -15,14 +15,18 @@ conn = sqlite3.connect(name)
 # We must create a cursor. 
 c = conn.cursor()
 
-# We are creating a table in the database
-c.execute('''CREATE TABLE users (Username text, Password text, Native_Language text, Learning_language text, minutes_of_use qty, Join_date text)''')
-
-
-def addingvalues():
+def addingvalues(table, name, password, NL, LL, use, joinDate):
 # We are adding new information to the table 
-    c.execute("INSERT INTO users VALUES ('Juan','tacosArethebest','Spanish','English', 30 , '2021-01-27')")
+    sentence = "INSERT INTO "+ table + " VALUES (" + name + "," + password + "," + NL + "," + LL + "," + use + "," + joinDate + ")"
+    c.execute(sentence)
     conn.commit()
+
+def creatingTable(newTable): 
+# We are creating a table in the database
+    sentence = '''CREATE TABLE ''' + newTable + '''(Username text, Password text, Native_Language text, Learning_language text, minutes_of_use qty, Join_date text)'''
+    c.execute(sentence)
+
+
 
 c.execute("INSERT INTO users VALUES ('Josh','PeacetoTheworld','English', 'Spanish', 45 , '2021-01-30')")
 conn.commit()
