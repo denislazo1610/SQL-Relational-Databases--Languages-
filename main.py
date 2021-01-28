@@ -27,6 +27,14 @@ def creatingTable(newTable):
     c.execute(sentence)
 
 
+def options():
+    print("Choose a option:\n")
+    print("\'A\' for adding a new table")
+    print("\'B\' for adding a new entity to a table")
+
+print("Hello, this is a Tracking programm! Which will keep the information of your users.")    
+options()
+choice = input('Enter your choice:')
 
 c.execute("INSERT INTO users VALUES ('Josh','PeacetoTheworld','English', 'Spanish', 45 , '2021-01-30')")
 conn.commit()
