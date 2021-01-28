@@ -8,21 +8,20 @@ name = name + '.db'
 print(name)
 
 
-#In here, the new information will be 
-#saved in the database that you created.
+#In here, the new information will be saved in the database that you created.
 conn = sqlite3.connect(name)
 
 # We must create a cursor. 
 c = conn.cursor()
 
+# We are adding new information to the table. 
 def addingvalues(table, name, password, NL, LL, use, joinDate):
-# We are adding new information to the table 
     sentence = "INSERT INTO "+ table + " VALUES (" + name + "," + password + "," + NL + "," + LL + "," + use + "," + joinDate + ")"
     c.execute(sentence)
     conn.commit()
 
+# We are creating a table in the database.
 def creatingTable(newTable): 
-# We are creating a table in the database
     sentence = '''CREATE TABLE ''' + newTable + '''(Username text, Password text, Native_Language text, Learning_language text, minutes_of_use qty, Join_date text)'''
     c.execute(sentence)
 
@@ -34,6 +33,7 @@ def options():
 
 print("Hello, this is a Tracking programm! Which will keep the information of your users.")    
 options()
+print('\n')
 choice = input('Enter your choice:')
 
 c.execute("INSERT INTO users VALUES ('Josh','PeacetoTheworld','English', 'Spanish', 45 , '2021-01-30')")
