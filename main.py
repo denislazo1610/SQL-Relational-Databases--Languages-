@@ -36,15 +36,33 @@ def action(choice, Tables):
     
     if ((choice == 'a') or (choice == 'A')):
         print('Creating a new table')
+        newTable = input("what is your new table:")
+        Tables.append(newTable)
+        creatingTable(newTable)
         options()
         choice = input('Enter your choice:')
-        action()
+        action(choice, Tables)
 
     elif ((choice == 'b') or (choice == 'B')):
-        print('Adding new Value to a table')
+       
+        print("This is all your tables: \n")
+        for x in Tables:
+            print(x)
+
+        print('\n')
+        selection = input('Which one you want to add a new value? ')
+        name = input('What is the name of the user? ')
+        password = input ('What is the new password of the new user? ')
+        NativeLanguage = input('What is the native language of this user? ')
+        NewLanguage = input('What language does this user wants to learn? ')
+        Minutes = input('How many minutes did the user use this? ')
+        Date = input('When did the user start using this webSite? ')
+
+        addingvalues(selection, name, password, NativeLanguage, NewLanguage, Minutes, Date)
+
         options()
         choice = input('Enter your choice:')
-        action()
+        action(choice, Tables)
 
     elif ((choice == 'exit') or (choice == 'Exit')):
         print('Thank you!')
