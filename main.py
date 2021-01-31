@@ -1,6 +1,6 @@
 import  sqlite3
 import os
-from user import cuenta
+from user import values
 
  
 #In here, we are creating the database. 
@@ -50,15 +50,9 @@ def action(choice, Tables):
             print(x)
 
         print('\n')
-        selection = input('Which one you want to add a new value? ')
-        name = input('What is the name of the user? ')
-        password = input ('What is the new password of the new user? ')
-        NativeLanguage = input('What is the native language of this user? ')
-        NewLanguage = input('What language does this user wants to learn? ')
-        Minutes = input('How many minutes did the user use this? ')
-        Date = input('When did the user start using this webSite? ')
+        user = values.from_input()
 
-        addingvalues(selection, name, password, NativeLanguage, NewLanguage, Minutes, Date)
+        addingvalues(user.username, user.password, user.NativeLanguage, user.LearningLanguage, user.minutes, user.joinDate)
 
         options()
         choice = input('Enter your choice:')
@@ -71,8 +65,8 @@ print("Hello, this is a Tracking programm! Which will keep the information of yo
 options()
 print('\n')
 choice = input('Enter your choice:')
-Tables = []
-action(choice, Tables)
+TablesNames = []
+action(choice, TablesNames)
 
 c.execute("INSERT INTO users VALUES ('Josh','PeacetoTheworld','English', 'Spanish', 45 , '2021-01-30')")
 conn.commit()
