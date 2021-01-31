@@ -29,18 +29,32 @@ def options():
     print("Choose a option:\n")
     print("\'A\' for adding a new table")
     print("\'B\' for adding a new entity to a table")
+    print("\'Exit\' for finish programm")
+
+
+def action(choice, Tables):
+    
+    if ((choice == 'a') or (choice == 'A')):
+        print('Creating a new table')
+        options()
+        choice = input('Enter your choice:')
+        action()
+
+    elif ((choice == 'b') or (choice == 'B')):
+        print('Adding new Value to a table')
+        options()
+        choice = input('Enter your choice:')
+        action()
+
+    elif ((choice == 'exit') or (choice == 'Exit')):
+        print('Thank you!')
 
 print("Hello, this is a Tracking programm! Which will keep the information of your users.")    
 options()
 print('\n')
 choice = input('Enter your choice:')
 Tables = []
-
-def action():
-    if ((choice == 'a') or (choice == 'A')):
-        print('Creating a new table')
-    elif ((choice == 'b') or (choice == 'B')):
-        print('Aadding new Value to a table')
+action(choice, Tables)
 
 c.execute("INSERT INTO users VALUES ('Josh','PeacetoTheworld','English', 'Spanish', 45 , '2021-01-30')")
 conn.commit()
