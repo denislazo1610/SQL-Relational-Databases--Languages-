@@ -24,7 +24,7 @@ def creatingTable(newTable):
 
 
 # We are adding new information to the table. 
-def addingvalues(table, name, password, NL, LL, use, joinDate):
+def addingValues(table, name, password, NL, LL, use, joinDate):
     c.execute('''INSERT INTO {} VALUES (?, ?, ?, ?, ?, ?)'''.format(table), (name, password, NL, LL, use, joinDate))
     conn.commit()
 
@@ -56,7 +56,7 @@ def action(choice, Tables):
         selected = input('Which table you want to add: ')
         user = values.from_input()
 
-        addingvalues(selected, user.username, user.password, user.NativeLanguage, user.LearningLanguage, user.minutes, user.joinDate)
+        addingValues(selected, user.username, user.password, user.NativeLanguage, user.LearningLanguage, user.minutes, user.joinDate)
 
         options()
         choice = input('Enter your choice:')
