@@ -7,7 +7,7 @@ class values:
         self.minutes = minutes
         self.joinDate = joinDate
 
-     @classmethod
+    @classmethod
     def from_input(cls):
         return cls(
             input('Username: '),
