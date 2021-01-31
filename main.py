@@ -14,17 +14,16 @@ conn = sqlite3.connect(name)
 # We must create a cursor. 
 c = conn.cursor()
 
-# We are adding new information to the table. 
-def addingvalues(table, name, password, NL, LL, use, joinDate):
-    sentence = "INSERT INTO "+ table + " VALUES (" + name + "," + password + "," + NL + "," + LL + "," + use + "," + joinDate + ")"
-    c.execute(sentence)
-    conn.commit()
-
 # We are creating a table in the database.
 def creatingTable(newTable): 
     sentence = '''CREATE TABLE ''' + newTable + '''(Username text, Password text, Native_Language text, Learning_language text, minutes_of_use qty, Join_date text)'''
     c.execute(sentence)
 
+# We are adding new information to the table. 
+def addingvalues(table, name, password, NL, LL, use, joinDate):
+    sentence = "INSERT INTO "+ table + " VALUES (" + name + "," + password + "," + NL + "," + LL + "," + use + "," + joinDate + ")"
+    c.execute(sentence)
+    conn.commit()
 
 def options():
     print("Choose a option:\n")
@@ -35,6 +34,13 @@ print("Hello, this is a Tracking programm! Which will keep the information of yo
 options()
 print('\n')
 choice = input('Enter your choice:')
+Tables = []
+
+def action():
+    if ((choice == 'a') or (choice == 'A')):
+        print('Creating a new table')
+    elif ((choice == 'b') or (choice == 'B')):
+        print('Aadding new Value to a table')
 
 c.execute("INSERT INTO users VALUES ('Josh','PeacetoTheworld','English', 'Spanish', 45 , '2021-01-30')")
 conn.commit()
