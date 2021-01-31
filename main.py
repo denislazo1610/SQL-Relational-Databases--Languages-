@@ -1,5 +1,6 @@
 import  sqlite3
 import os
+from user import cuenta
 
  
 #In here, we are creating the database. 
@@ -21,8 +22,7 @@ def creatingTable(newTable):
 
 # We are adding new information to the table. 
 def addingvalues(table, name, password, NL, LL, use, joinDate):
-    sentence = "INSERT INTO "+ table + " VALUES (" + name + "," + password + "," + NL + "," + LL + "," + use + "," + joinDate + ")"
-    c.execute(sentence)
+    c.execute("INSERT INTO ? VALUES (?, ?, ?, ?, ? , ?)", (table, name, password, NL, LL, use, joinDate))
     conn.commit()
 
 def options():
