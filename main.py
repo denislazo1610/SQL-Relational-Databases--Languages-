@@ -50,9 +50,10 @@ def action(choice, Tables):
             print(x)
 
         print('\n')
+        selected = input('Which table you want to add: ')
         user = values.from_input()
 
-        addingvalues(user.username, user.password, user.NativeLanguage, user.LearningLanguage, user.minutes, user.joinDate)
+        addingvalues(selected, user.username, user.password, user.NativeLanguage, user.LearningLanguage, user.minutes, user.joinDate)
 
         options()
         choice = input('Enter your choice:')
