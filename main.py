@@ -22,7 +22,6 @@ def creatingTable(newTable):
     c.execute(sentence)
     conn.commit()
 
-
 # We are adding new information to the table. 
 def addingValues(table, name, password, NL, LL, use, joinDate):
     c.execute('''INSERT INTO {} VALUES (?, ?, ?, ?, ?, ?)'''.format(table), (name, password, NL, LL, use, joinDate))
@@ -33,11 +32,25 @@ def modifyValue(table, placeNewValue, newValue, placeCondition, condition):
     c.execute('''UPDATE {} SET {} = (?) WHERE {} = (?)'''.format(table, placeNewValue, placeCondition), (newValue, condition))
     conn.commit()
 
+#You are deleting a value from a table
+def deletingValue(table, placeCondition, condition):
+    c.execute('''DELETE FROM {} WHERE {} = (?)'''.format(table, placeCondition), ( condition, ))
+    conn.commit()
+
+def queryValue(table, placeCondition, condition):
+    c.execute("SELECT * FROM {} WHERE {} = (?)".format(table, placeCondition), ( condition, ))
+    rows = c.fetchall()
+    for row in rows:
+        print(row)
+    conn.commit()
+
 def options():
     print("Choose a option:\n")
     print("\'A\' for adding a new table")
     print("\'B\' for adding a new entity to a table")
     print("\'C\' for updating a value of a table")
+    print("\'D\' for deleting a value of a table")
+    print("\'E\' for query a value of a table")
     print("\'Exit\' for finish programm")
 
 
@@ -74,6 +87,7 @@ def action(choice, Tables):
         print("This is all your tables: \n")
         for x in Tables:
             print(x)
+        print('\n')
         
         selected = input('Which table do you want to update? ')
         placeNewValue = input('What attributes do you want to change? ')
@@ -83,6 +97,38 @@ def action(choice, Tables):
 
 
         modifyValue(selected, placeNewValue, newValue, placeCondition, condition)
+
+        options()
+        choice = input('Enter your choice:')
+        action(choice, Tables)
+
+    elif ((choice == 'd') or (choice == 'D')):
+
+        print("This is all your tables: \n")
+        for x in Tables:
+            print(x)
+        print('\n')
+
+        selected = input("From what table you want to delete? ")
+        placeCondition = input("From what attribute? ")
+        condition = input('With what  value? ')
+
+        deletingValue(selected, placeCondition, condition)
+
+        options()
+        choice = input('Enter your choice:')
+        action(choice, Tables)
+
+    elif ((choice == 'e') or (choice == 'E')):
+        print("query")
+        selected = input('What table? ')
+        placeCondition = input('From what attribute? ')
+        condition = input("with what value? ")
+        queryValue(selected, placeCondition, condition)
+
+        options()
+        choice = input('Enter your choice:')
+        action(choice, Tables)
 
     elif ((choice == 'exit') or (choice == 'Exit')):
         print('Thank you!')
