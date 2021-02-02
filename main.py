@@ -2,12 +2,14 @@ import  sqlite3
 import os
 from user import values
 
- 
+print("Hello, this is a Tracking programm! Which will keep the information of your users.")   
+
 #In here, we are creating the database. 
 name = input("Name your database file: ")
 name = name + '.db'
 print(name)
 
+os.system("cls")
 
 #In here, the new information will be saved in the database that you created.
 conn = sqlite3.connect(name)
@@ -57,16 +59,19 @@ def options():
 def action(choice, Tables):
     
     if ((choice == 'a') or (choice == 'A')):
-        print('Creating a new table')
+        os.system("cls")
+        print('Creating a new table\n')
         newTable = input("What is your new table:")
         Tables.append(newTable)
         creatingTable(newTable)
+
+        os.system("cls")
         options()
         choice = input('Enter your choice:')
         action(choice, Tables) 
 
     elif ((choice == 'b') or (choice == 'B')):
-       
+        os.system("cls")
         print("This is all your tables: \n")
         for x in Tables:
             print(x)
@@ -77,11 +82,13 @@ def action(choice, Tables):
 
         addingValues(selected, user.username, user.password, user.NativeLanguage, user.LearningLanguage, user.minutes, user.joinDate)
 
+        os.system("cls")
         options()
         choice = input('Enter your choice:')
         action(choice, Tables)
     
     elif ((choice == 'c') or (choice == 'C')):
+        os.system("cls")
         print('Updating')
 
         print("This is all your tables: \n")
@@ -98,12 +105,13 @@ def action(choice, Tables):
 
         modifyValue(selected, placeNewValue, newValue, placeCondition, condition)
 
+        os.system("cls")
         options()
         choice = input('Enter your choice:')
         action(choice, Tables)
 
     elif ((choice == 'd') or (choice == 'D')):
-
+        os.system("cls")
         print("This is all your tables: \n")
         for x in Tables:
             print(x)
@@ -115,27 +123,31 @@ def action(choice, Tables):
 
         deletingValue(selected, placeCondition, condition)
 
+        os.system("cls")
         options()
         choice = input('Enter your choice:')
         action(choice, Tables)
 
     elif ((choice == 'e') or (choice == 'E')):
-        print("query")
+        os.system("cls")
+        print("query\n")
         selected = input('What table? ')
         placeCondition = input('From what attribute? ')
         condition = input("with what value? ")
         queryValue(selected, placeCondition, condition)
 
+        os.system("cls")
         options()
         choice = input('Enter your choice:')
         action(choice, Tables)
 
     elif ((choice == 'exit') or (choice == 'Exit')):
+        os.system("cls")
         print('Thank you!')
 
 
 
-print("Hello, this is a Tracking programm! Which will keep the information of your users.")    
+ 
 options()
 print('\n')
 choice = input('Enter your choice:')
