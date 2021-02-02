@@ -78,6 +78,7 @@ def action(choice, Tables):
 
         print('\n')
         selected = input('Which table you want to add: ')
+        os.system("cls")
         user = values.from_input()
 
         addingValues(selected, user.username, user.password, user.NativeLanguage, user.LearningLanguage, user.minutes, user.joinDate)
@@ -97,6 +98,7 @@ def action(choice, Tables):
         print('\n')
         
         selected = input('Which table do you want to update? ')
+        os.system("cls")
         placeNewValue = input('What attributes do you want to change? ')
         newValue = input('What do you want to put in there instead? ')
         placeCondition = input('If there is a condition, in what attribute is your condition? ')
@@ -131,11 +133,11 @@ def action(choice, Tables):
     elif ((choice == 'e') or (choice == 'E')):
         os.system("cls")
         print("query\n")
+
         selected = input('What table? ')
         placeCondition = input('From what attribute? ')
         condition = input("with what value? ")
         queryValue(selected, placeCondition, condition)
-
         os.system("cls")
         options()
         choice = input('Enter your choice:')
