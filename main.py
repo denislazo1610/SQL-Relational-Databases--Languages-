@@ -122,7 +122,7 @@ def action(choice, Tables):
         print('\n')
 
         selected = input("From what table you want to delete? ")
-        print("This is ll your attributes: Username, Password, Native_Language, Learning_language, minutes_of_use, Join_date\n")
+        print("This is all your attributes:")
         placeCondition = input("From what attribute?")
         condition = input('With what  value? ')
 
