@@ -44,6 +44,8 @@ def queryValue(table, placeCondition, condition):
     rows = c.fetchall()
     for row in rows:
         print(row)
+
+    answer = input('is that correct? ')
     conn.commit()
 
 def options():
@@ -120,7 +122,8 @@ def action(choice, Tables):
         print('\n')
 
         selected = input("From what table you want to delete? ")
-        placeCondition = input("From what attribute? ")
+        print("This is ll your attributes: Username, Password, Native_Language, Learning_language, minutes_of_use, Join_date\n")
+        placeCondition = input("From what attribute?")
         condition = input('With what  value? ')
 
         deletingValue(selected, placeCondition, condition)
@@ -132,7 +135,9 @@ def action(choice, Tables):
 
     elif ((choice == 'e') or (choice == 'E')):
         os.system("cls")
-        print("query\n")
+        print("This is all your tables: \n")
+        for x in Tables:
+            print(x)
 
         selected = input('What table? ')
         placeCondition = input('From what attribute? ')
