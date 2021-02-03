@@ -137,6 +137,7 @@ def action(choice, Tables):
         print("This is all your tables: \n")
         for x in Tables:
             print(x)
+        print('\n')
         
         selected = input('What table? ')
         placeCondition = input('From what attribute? Username, Password, Native_Language, Learning_language, minutes_of_use, Join_date? \n')
