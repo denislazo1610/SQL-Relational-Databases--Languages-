@@ -121,8 +121,6 @@ def action(choice, Tables):
             print(x)
         print('\n')
 
-        print("This is all your attributes:")
-        
         selected = input("From what table you want to delete? ")
         placeCondition = input("From what attribute?")
         condition = input('With what  value? ')
@@ -139,9 +137,10 @@ def action(choice, Tables):
         print("This is all your tables: \n")
         for x in Tables:
             print(x)
-
+        
         selected = input('What table? ')
-        placeCondition = input('From what attribute? ')
+        placeCondition = input('From what attribute? Username, Password, Native_Language, Learning_language, minutes_of_use, Join_date? \n')
+        
         condition = input("with what value? ")
         queryValue(selected, placeCondition, condition)
         os.system("cls")
